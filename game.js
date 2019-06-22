@@ -1,51 +1,63 @@
+// Base variables
 var letterChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
-var wins = 1;
-var losses = 1;
+var wins = 0;
+var losses = 0;
 var guesses = 10;
 var wrong = [];
 
-var winsText = document.getElementById("win-text");
-var lossesText = document.getElementById("loss-text");
-var guessText = document.getElementById("guess-number");
-var wrongChoiceText = document.getElementById("wrong-guess");
+// Display base variables on the webpage
+var winsText = $("#win-text");
+var lossesText = $("#loss-text");
+var guessText = $("#guess-number");
+var wrongChoiceText = $("#wrong-guess");
 
-var psychicGuess = letterChoice[Math.floor(Math.random() * letterChoice.length)];
+var psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)];
+//console.log("Psychic guess: " + psychicChoice);
 
-document.onkeyup = function (event) {
-
-    // Key pressed
+// Function that handles any user input
+$(document).on("keyup", function (event) {
     var userGuess = event.key;
-    // The computer guess
-
-    console.log(psychicGuess)
-
-    // If player guesses correctly
-    if (userGuess === psychicGuess) {
-        document.getElementById("win-text").innerHTML = wins++;
-        document.getElementById("guess-number").innerHTML = 10;
-        document.getElementById("wrong-guess").innerHTML = [];
-        reset()
+    console.log(userGuess);
+    // Sets parameters to read for user input being letters or not
+    if (userGuess === "a" || userGuess === "b" || userGuess === "c" || userGuess === "d" || userGuess === "e" ||
+        userGuess === "f" || userGuess === "g" || userGuess === "h" || userGuess === "i" || userGuess === "j" ||
+        userGuess === "k" || userGuess === "l" || userGuess === "m" || userGuess === "n" || userGuess === "o" ||
+        userGuess === "p" || userGuess === "q" || userGuess === "r" || userGuess === "s" || userGuess === "t" ||
+        userGuess === "u" || userGuess === "v" || userGuess === "w" || userGuess === "x" || userGuess === "y" ||
+        userGuess === "z") {
+        // Sets the parameters for a correct guess
+        if (userGuess === psychicChoice) {
+            wins++;
+            $("#win-text").html(wins);
+            $("#guess-number").html(10);
+            $("#wrong-guess").html("");
+            reset();
+        }
+        // Sets the parameters for a wrong guess
+         else {
+            guesses--;
+            $("#guess-number").html(guesses);
+            wrong.push(userGuess);
+            $("#wrong-guess").html(wrong+", ");
+         }
+        // // If guess number reaches zero
+         if (guesses <= 0) {
+             losses++;
+             $("#loss-text").html(losses);
+             $("#guess-number").html(10);
+             $("#wrong-guess").html("");
+             reset();
+         }
+    // Handles any non-letter user input
+    } else {
+        alert("Please press a letter key!");
     }
-    // Otherwise
-    else {
-        document.getElementById("guess-number").innerHTML = guesses--;
-        wrong.push(userGuess);
-        document.getElementById("wrong-guess").innerHTML = wrong;
-    }
-    // If guess number reaches zero
-    if (guesses <= 0) {
-        document.getElementById("loss-text").innerHTML = losses++;
-        document.getElementById("guess-number").innerHTML = 10;
-        document.getElementById("wrong-guess").innerHTML = [];
-        reset()
-    }
+});
 
-    function reset() {
-        guesses = 10;
-        wrong = [];
-        psychicChoice = letterChoice[psychicGuess];
-        psychicGuess = letterChoice[Math.floor(Math.random() * letterChoice.length)];
-    }
-
-
-};
+// Function that resets guesses. clears wrong div, and serves up new guess
+function reset() {
+    guesses = 10;
+    wrong = [];
+    psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)];
+    //console.log("Psychic guess: " + psychicChoice);
+}

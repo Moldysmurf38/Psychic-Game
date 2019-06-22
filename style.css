@@ -6,5 +6,26 @@ body {
 
 header {
     text-align: center;
-    color: rgb(0, 191, 255);
 }
+
+h1 {
+    margin-top: 5px;
+    animation-name: colorful;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes colorful {
+    0% {
+      color: rgb(255, 255, 255);
+    }
+    25% {
+      color: rgb(118, 155, 255);
+    }
+    50%{
+      color: rgb(59, 59, 255);
+    }
+    100% {
+      color: rgb(0, 0, 255);
+    }
+    }
