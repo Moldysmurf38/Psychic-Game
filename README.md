@@ -2,7 +2,7 @@
 
 ### **Project Description:**
 
-A game that involves you trying to match the letter that the computer guesses.
+A game that tests to see how psychic you are. Press letter keys to try and match the computer's guess.
 
 ### **Getting Started:**
 
@@ -14,11 +14,11 @@ None.
 
 ### **Installing:**
 
-None.
+If you want to use locally, clone the master repo folder onto your computer. Open the html file in your browser and play the game.
 
 ### **Built With:**
 
-N/A
+Bootstrap: https://getbootstrap.com/
 
 ### **Author(s):**
 
