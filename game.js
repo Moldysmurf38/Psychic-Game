@@ -17,14 +17,10 @@ var psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)
 // Function that handles any user input
 $(document).on("keyup", function (event) {
     var userGuess = event.key;
+    var userKey = event.keyCode;
     console.log(userGuess);
     // Sets parameters to read for user input being letters or not
-    if (userGuess === "a" || userGuess === "b" || userGuess === "c" || userGuess === "d" || userGuess === "e" ||
-        userGuess === "f" || userGuess === "g" || userGuess === "h" || userGuess === "i" || userGuess === "j" ||
-        userGuess === "k" || userGuess === "l" || userGuess === "m" || userGuess === "n" || userGuess === "o" ||
-        userGuess === "p" || userGuess === "q" || userGuess === "r" || userGuess === "s" || userGuess === "t" ||
-        userGuess === "u" || userGuess === "v" || userGuess === "w" || userGuess === "x" || userGuess === "y" ||
-        userGuess === "z") {
+    if (userKey >= 65 && userKey <= 90 || userKey >= 97 && userKey <= 122) {
         // Sets the parameters for a correct guess
         if (userGuess === psychicChoice) {
             wins++;
