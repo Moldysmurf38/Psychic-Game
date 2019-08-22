@@ -26,7 +26,7 @@ Add a more polished UI.
 
 ### **Built With:**
 
-JQuery: https://jquery.com/
+JQuery: https://jquery.com/ <br/>
 Bootstrap: https://getbootstrap.com/
 
 ### **Author(s):**
