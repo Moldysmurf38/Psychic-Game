@@ -18,7 +18,6 @@ var psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)
 $(document).on("keyup", function (event) {
     var userGuess = event.key;
     var userKey = event.keyCode;
-    console.log(userGuess);
     // Sets parameters to read for user input being letters or not
     if (userKey >= 65 && userKey <= 90 || userKey >= 97 && userKey <= 122) {
         // Sets the parameters for a correct guess
