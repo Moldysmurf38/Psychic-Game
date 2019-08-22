@@ -2,7 +2,7 @@
 var letterChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 var wins = 0;
 var losses = 0;
-var guesses = 10;
+var guesses= 10;
 var wrong = [];
 
 // Display base variables on the webpage
@@ -13,9 +13,10 @@ var wrongChoiceText = $("#wrong-guess");
 
 var psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)];
 //console.log("Psychic guess: " + psychicChoice);
-
+$("#guess-number").html(guesses)
 // Function that handles any user input
 $(document).on("keyup", function (event) {
+    
     var userGuess = event.key;
     var userKey = event.keyCode;
     // Sets parameters to read for user input being letters or not
