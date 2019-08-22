@@ -6,17 +6,16 @@ var guesses= 10;
 var wrong = [];
 
 // Display base variables on the webpage
-var winsText = $("#win-text");
-var lossesText = $("#loss-text");
-var guessText = $("#guess-number");
-var wrongChoiceText = $("#wrong-guess");
+$("#guess-number").html(guesses);
+$("#win-text").html(wins);
+$("#loss-text").html(losses);
 
+// Initial psychic guess
 var psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)];
-//console.log("Psychic guess: " + psychicChoice);
-$("#guess-number").html(guesses)
+
 // Function that handles any user input
 $(document).on("keyup", function (event) {
-    
+    // Values for user letter and keycode
     var userGuess = event.key;
     var userKey = event.keyCode;
     // Sets parameters to read for user input being letters or not
@@ -30,20 +29,20 @@ $(document).on("keyup", function (event) {
             reset();
         }
         // Sets the parameters for a wrong guess
-         else {
+        else {
             guesses--;
             $("#guess-number").html(guesses);
             wrong.push(userGuess);
             $("#wrong-guess").html(wrong+", ");
-         }
-        // // If guess number reaches zero
-         if (guesses <= 0) {
-             losses++;
-             $("#loss-text").html(losses);
-             $("#guess-number").html(10);
-             $("#wrong-guess").html("");
-             reset();
-         }
+        }
+        // If guess number reaches zero
+        if (guesses <= 0) {
+            losses++;
+            $("#loss-text").html(losses);
+            $("#guess-number").html(10);
+            $("#wrong-guess").html("");
+            reset();
+        }
     // Handles any non-letter user input
     } else {
         alert("Please press a letter key!");
@@ -55,5 +54,4 @@ function reset() {
     guesses = 10;
     wrong = [];
     psychicChoice = letterChoice[Math.floor(Math.random() * letterChoice.length)];
-    //console.log("Psychic guess: " + psychicChoice);
 }
